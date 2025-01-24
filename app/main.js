@@ -2,10 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const zlib = require("zlib");
 
-// You can use print statements as follows for debugging, they'll be visible when running tests.
-console.log("Logs from your program will appear here!");
-
-// Uncomment this block to pass the first stage
 const command = process.argv[2];
 
 switch (command) {
@@ -29,8 +25,8 @@ function createGitDirectory() {
   console.log("Initialized git directory");
 }
 
-async function catFile(hash){
-    const content = await fs.readFileSync(path.join(process.cwd(), ".git", "objects", hash.slice(0,2), hash.slice(2)));
+async function catFile(hash) {
+    const content = fs.readFileSync(path.join(process.cwd(), ".git", "objects", hash.slice(0, 2), hash.slice(2)));
     const dataUnzipped = zlib.inflateSync(content);
     const res = dataUnzipped.toString().split('\0')[1];
     process.stdout.write(res);

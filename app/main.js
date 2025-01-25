@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-
 const GIT_DIR = '.git';
 
 function createGitDirectory() {
@@ -82,7 +81,6 @@ function cloneRepository(url) {
   // This is a placeholder for the clone functionality
   console.log(`Cloning repository from ${url}`);
 }
-
 const command = process.argv[2];
 
 switch (command) {
